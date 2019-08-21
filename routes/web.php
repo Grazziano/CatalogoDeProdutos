@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos', 'ProdutosController@index');
+Route::resource('/contato', 'ContatoController');
+Route::resource('/produtos', 'ProdutosController');
