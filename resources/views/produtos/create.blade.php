@@ -10,7 +10,16 @@
             {{$message}}
         </div>
     @endif
-<form method="POST" action="{{url('produtos')}}">
+    @if (count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form method="POST" action="{{url('produtos')}}">
     @csrf
 		<div class="form-group mb-3">
 		    <label for="sku">SKU</label>
