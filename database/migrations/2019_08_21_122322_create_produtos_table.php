@@ -17,7 +17,7 @@ class CreateProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->string('sku');
             $table->string('titulo');
-            $table->longText('descicao');
+            $table->longText('descricao');
             $table->float('preco', 8, 2);
             $table->timestamps();
         });
