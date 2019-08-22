@@ -9,7 +9,7 @@ class ProdutosController extends Controller
 {
     public function index()
     {
-        $produtos = Produtos::all();
+        $produtos = Produtos::paginate(8);
 
         return view('produtos.index', array('produtos' => $produtos, 'buscar' => null));
     }
@@ -97,7 +97,7 @@ class ProdutosController extends Controller
         $buscaInput = $request->input('busca');
         $produtos = Produtos::where('titulo', 'LIKE', '%' . $buscaInput . '%')
             ->orwhere('descricao', 'LIKE', '%' . $buscaInput . '%')
-            ->get();
+            ->paginate(8);
 
         return view('produtos.index', array('produtos' => $produtos, 'buscar' => $buscaInput));
     }
