@@ -65,13 +65,19 @@ class ProdutosController extends Controller
             'preco' => 'required|numeric'
         ]);
 
+        if ($request->hasFile('imgproduto')) {
+            $imagem = $request->file('imgproduto');
+            $nomearquivo = md5($id) . "." . $imagem->getClientOriginalExtension();
+            $request->file('imgproduto')->move(public_path('./img/produtos/'), $nomearquivo);
+        }
+
         $produto->sku = $request->get('sku');
         $produto->titulo = $request->get('titulo');
         $produto->descricao = $request->get('descricao');
         $produto->preco = $request->get('preco');
 
         if ($produto->save()) {
-            return redirect('produtos/'.$id.'/edit')->with('success', 'Produto alterado com sucesso!');
+            return redirect('produtos/' . $id . '/edit')->with('success', 'Produto alterado com sucesso!');
         }
     }
 }
