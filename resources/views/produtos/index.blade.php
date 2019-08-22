@@ -10,6 +10,19 @@
         </div>
     @endif
     <div class="row">
+        <div class="col-md-12">
+            <form action="{{url('produtos/busca')}}" method="post">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="busca" id="busca" placeholder="Buscar produto no site ..." value="{{$buscar}}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary">Buscar</button>
+                    </div>
+                </div>
+            </form>            
+        </div>
+    </div>
+    <div class="row">
         @foreach ($produtos as $produto)
         <div class="col-md-3">
 

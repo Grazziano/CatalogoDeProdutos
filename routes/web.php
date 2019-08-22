@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::resource('/contato', 'ContatoController');
 Route::resource('/produtos', 'ProdutosController');
+Route::post('/produtos/busca', 'ProdutosController@busca');
