@@ -32,6 +32,8 @@
 
             <h4 class="text-center"><a href="{{URL::to('produtos')}}/{{$produto->id}}">{{$produto->titulo}}</a></h4>
 
+            @if (Auth::check())           
+
             <div class="mb-3">                
                 <form method="POST" action="{{action('ProdutosController@destroy', $produto->id)}}">
                     @csrf
@@ -40,7 +42,7 @@
                     <button class="btn btn-danger">Excluir</button>
                 </form>
             </div>
-            
+            @endif
         </div>
     @endforeach
     </div>
